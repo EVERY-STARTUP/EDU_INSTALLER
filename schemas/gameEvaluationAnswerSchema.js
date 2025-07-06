@@ -27,5 +27,6 @@ exports.findAllGameEvaluationAnswerSchema = joi_1.default.object({
     search: joi_1.default.string().allow('').optional(),
     pagination: joi_1.default.boolean().optional(),
     startDate: joi_1.default.string().allow('').optional(),
-    endDate: joi_1.default.string().allow('').optional()
+    endDate: joi_1.default.string().allow('').optional(),
+    userId: joi_1.default.string().optional()
 });

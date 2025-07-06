@@ -24,11 +24,13 @@ exports.createQuizSchema = joi_1.default.object({
 exports.updateQuizOptionSchema = joi_1.default.object({
     id: joi_1.default.number().integer().positive().optional(),
     optionText: joi_1.default.string().required(),
-    isCorrect: joi_1.default.boolean().required()
+    isCorrect: joi_1.default.boolean().required(),
+    questionId: joi_1.default.number().optional()
 });
 exports.updateQuizQuestionSchema = joi_1.default.object({
     id: joi_1.default.number().integer().positive().optional(),
     questionText: joi_1.default.string().required(),
+    quizId: joi_1.default.number().optional(),
     options: joi_1.default.array().items(exports.updateQuizOptionSchema).min(1).required()
 });
 exports.updateQuizSchema = joi_1.default.object({
@@ -36,6 +38,7 @@ exports.updateQuizSchema = joi_1.default.object({
     id: joi_1.default.number().integer().positive().required(),
     title: joi_1.default.string().optional(),
     description: joi_1.default.string().optional(),
+    category: joi_1.default.string().valid('personal', 'general').default('personal').optional(),
     items: joi_1.default.array().items(exports.updateQuizQuestionSchema).required().min(1).optional()
 });
 exports.deleteQuizSchema = joi_1.default.object({
