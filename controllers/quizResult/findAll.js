@@ -23,7 +23,7 @@ const findAllQuizResult = async (req, res) => {
     if (validationError)
         return (0, requestHandler_1.handleValidationError)(res, validationError);
     try {
-        const { page: queryPage, size: querySize, search, pagination, startDate, endDate, jwtPayload } = queryParams;
+        const { page: queryPage, size: querySize, search, pagination, startDate, endDate, jwtPayload, userId } = queryParams;
         const page = new pagination_1.Pagination(Number(queryPage) || 0, Number(querySize) || 10);
         const dateFilter = startDate && endDate
             ? {
@@ -40,6 +40,9 @@ const findAllQuizResult = async (req, res) => {
                 deleted: false,
                 ...(jwtPayload.userRole === 'user' && {
                     userId: jwtPayload.userId
+                }),
+                ...(userId && {
+                    userId: userId
                 }),
                 ...(search && {
                     title: { [sequelize_1.Op.like]: `%${search}%` }

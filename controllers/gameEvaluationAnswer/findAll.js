@@ -20,7 +20,7 @@ const findAllGameEvaluationAnswer = async (req, res) => {
     if (validationError)
         return (0, requestHandler_1.handleValidationError)(res, validationError);
     try {
-        const { page: queryPage, size: querySize, search, pagination, startDate, endDate } = queryParams;
+        const { page: queryPage, size: querySize, search, pagination, startDate, endDate, userId } = queryParams;
         const page = new pagination_1.Pagination(Number(queryPage) || 0, Number(querySize) || 10);
         const dateFilter = startDate && endDate
             ? {
@@ -34,6 +34,9 @@ const findAllGameEvaluationAnswer = async (req, res) => {
                 deleted: false,
                 ...(search && {
                     answer: { [sequelize_1.Op.like]: `%${search}%` }
+                }),
+                ...(userId && {
+                    userId: userId
                 }),
                 ...dateFilter
             },

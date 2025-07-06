@@ -16,6 +16,7 @@ const updateQuiz = async (req, res) => {
     const { error: validationError, value: validatedData } = (0, requestHandler_1.validateRequest)(quizSchema_1.updateQuizSchema, req.body);
     if (validationError)
         return (0, requestHandler_1.handleValidationError)(res, validationError);
+    console.log(validatedData.items[0]);
     const t = await quizModel_1.QuizModel.sequelize.transaction();
     try {
         const [quizUpdateCount] = await quizModel_1.QuizModel.update({
@@ -40,7 +41,7 @@ const updateQuiz = async (req, res) => {
                         transaction: t
                     });
                     if (questionUpdateCount === 0) {
-                        throw new Error(`Question not found with ID: ${item.id}`);
+                        continue;
                     }
                     if (item.options?.length > 0) {
                         for (const opt of item.options) {
@@ -53,7 +54,7 @@ const updateQuiz = async (req, res) => {
                                     transaction: t
                                 });
                                 if (optionUpdateCount === 0) {
-                                    throw new Error(`Option not found with ID: ${opt.id}`);
+                                    continue;
                                 }
                             }
                             else {
