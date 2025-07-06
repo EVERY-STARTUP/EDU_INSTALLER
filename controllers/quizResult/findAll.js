@@ -33,7 +33,7 @@ const findAllQuizResult = async (req, res) => {
             }
             : {};
         const totalQuestionsSubQuery = sequelize_1.Sequelize.literal(`(
-              SELECT COUNT(*) FROM quiz_question AS questions WHERE questions.quiz_id = Quiz.id
+              SELECT COUNT(*) FROM quiz_question AS questions WHERE questions.quiz_id = quiz.id
             )`);
         const result = await quizResult_1.QuizResultModel.findAndCountAll({
             where: {
