@@ -1,0 +1,31 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.appRouterV1 = void 0;
+const appCheck_routes_1 = __importDefault(require("./appCheck.routes"));
+const user_routes_1 = __importDefault(require("./user.routes"));
+const quiz_routes_1 = __importDefault(require("./quiz.routes"));
+const quizResult_routes_1 = __importDefault(require("./quizResult.routes"));
+const auth_routes_1 = __importDefault(require("./auth.routes"));
+const module_routes_1 = __importDefault(require("./module.routes"));
+const puzzleGame_routes_1 = __importDefault(require("./puzzleGame.routes"));
+const gameEvaluationQuestion_routes_1 = __importDefault(require("./gameEvaluationQuestion.routes"));
+const gameEvaluationAnswer_routes_1 = __importDefault(require("./gameEvaluationAnswer.routes"));
+const myProfile_routes_1 = __importDefault(require("./myProfile.routes"));
+const statistic_routes_1 = __importDefault(require("./statistic.routes"));
+const appRouterV1 = (app) => {
+    app.use('/api/v1', appCheck_routes_1.default);
+    app.use('/api/v1/auth', auth_routes_1.default);
+    app.use('/api/v1/users', user_routes_1.default);
+    app.use('/api/v1/quizzes', quiz_routes_1.default);
+    app.use('/api/v1/quizzes/results', quizResult_routes_1.default);
+    app.use('/api/v1/modules', module_routes_1.default);
+    app.use('/api/v1/games/puzzles', puzzleGame_routes_1.default);
+    app.use('/api/v1/games/evaluations/questions', gameEvaluationQuestion_routes_1.default);
+    app.use('/api/v1/games/evaluations/answers', gameEvaluationAnswer_routes_1.default);
+    app.use('/api/v1/my-profiles', myProfile_routes_1.default);
+    app.use('/api/v1/statistic', statistic_routes_1.default);
+};
+exports.appRouterV1 = appRouterV1;

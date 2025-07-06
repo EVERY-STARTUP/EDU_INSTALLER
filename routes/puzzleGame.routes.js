@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const middlewares_1 = require("../middlewares");
+const puzzleGame_1 = require("../controllers/puzzleGame");
+const router = (0, express_1.Router)();
+router.use(middlewares_1.middleware.useAuthorization);
+router.get('/', puzzleGame_1.puzzleGameController.findAll);
+router.get('/detail/:id', puzzleGame_1.puzzleGameController.findByDetail);
+router.post('/', puzzleGame_1.puzzleGameController.create);
+router.patch('/', puzzleGame_1.puzzleGameController.update);
+router.delete('/:id', puzzleGame_1.puzzleGameController.remove);
+exports.default = router;
