@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const middlewares_1 = require("../middlewares");
+const wordGameScore_1 = require("../controllers/wordGameScore");
+const router = (0, express_1.Router)();
+router.use(middlewares_1.middleware.useAuthorization);
+router.get('/', wordGameScore_1.wordGameScoreController.findAll);
+router.get('/detail/:id', wordGameScore_1.wordGameScoreController.findDetail);
+router.post('/', wordGameScore_1.wordGameScoreController.create);
+exports.default = router;
