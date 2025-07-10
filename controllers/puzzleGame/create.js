@@ -25,6 +25,7 @@ const createPuzzleGame = async (req, res) => {
             const questionPayload = validatedData.gameEvaluationQuestion.map((q) => ({
                 question: q.question,
                 gameId: puzzleGame.id,
+                key: q.key,
                 category: q.category || 'puzzle'
             }));
             await gameEvaluationQuestionModel_1.GameEvaluationQuestionModel.bulkCreate(questionPayload, {

@@ -10,6 +10,10 @@ exports.GameEvaluationQuestionModel = config_1.sequelize.define('GameEvelutaionQ
         type: sequelize_1.DataTypes.TEXT,
         allowNull: false
     },
+    key: {
+        type: sequelize_1.DataTypes.TEXT,
+        allowNull: false
+    },
     gameId: {
         type: sequelize_1.DataTypes.INTEGER,
         allowNull: false

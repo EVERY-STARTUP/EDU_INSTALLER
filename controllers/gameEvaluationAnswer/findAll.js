@@ -44,7 +44,7 @@ const findAllGameEvaluationAnswer = async (req, res) => {
                 {
                     model: gameEvaluationQuestionModel_1.GameEvaluationQuestionModel,
                     as: 'question',
-                    attributes: ['question']
+                    attributes: ['question', 'key', 'category']
                 },
                 {
                     model: user_1.UserModel,

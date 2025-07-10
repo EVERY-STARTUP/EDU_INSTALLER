@@ -53,6 +53,7 @@ const updatePuzzleGame = async (req, res) => {
                     await gameEvaluationQuestionModel_1.GameEvaluationQuestionModel.create({
                         gameId: validatedData.id,
                         question: evaluation.question,
+                        key: evaluation.key,
                         category: 'puzzle'
                     }, { transaction: t });
                 }

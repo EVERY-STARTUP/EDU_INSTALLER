@@ -10,6 +10,7 @@ const gameEvaluationQuestionItemSchema = joi_1.default.object({
     id: joi_1.default.number().integer().positive().optional(),
     gameId: joi_1.default.number().integer().positive().optional(),
     question: joi_1.default.string().required(),
+    key: joi_1.default.string().required(),
     category: joi_1.default.string().valid('puzzle', 'word').default('puzzle')
 });
 exports.createPuzzleGameSchema = joi_1.default.object({

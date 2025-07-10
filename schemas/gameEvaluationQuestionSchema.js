@@ -9,6 +9,7 @@ const jwtPayloadSchema_1 = require("./jwtPayloadSchema");
 exports.createGameEvaluationQuestionSchema = joi_1.default.object({
     jwtPayload: jwtPayloadSchema_1.jwtPayloadSchema,
     question: joi_1.default.string().required(),
+    key: joi_1.default.string().required(),
     gameId: joi_1.default.number().required(),
     category: joi_1.default.string().valid('puzzle', 'word').default('puzzle').required()
 });
@@ -16,6 +17,7 @@ exports.updateGameEvaluationQuestionSchema = joi_1.default.object({
     jwtPayload: jwtPayloadSchema_1.jwtPayloadSchema,
     id: joi_1.default.number().integer().positive().required(),
     question: joi_1.default.string().optional(),
+    key: joi_1.default.string().optional(),
     gameId: joi_1.default.number().optional(),
     category: joi_1.default.string().valid('puzzle', 'word').default('puzzle').optional()
 });
