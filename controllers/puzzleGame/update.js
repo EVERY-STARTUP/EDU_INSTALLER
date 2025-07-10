@@ -40,7 +40,8 @@ const updatePuzzleGame = async (req, res) => {
             for (const evaluation of validatedData.gameEvaluationQuestion) {
                 if (evaluation.id) {
                     const [evaluationUpdateCount] = await gameEvaluationQuestionModel_1.GameEvaluationQuestionModel.update({
-                        question: evaluation.question
+                        question: evaluation.question,
+                        key: evaluation.key
                     }, {
                         where: {
                             id: evaluation.id,

@@ -25,7 +25,7 @@ const findDetailPuzzleGame = async (req, res) => {
                 {
                     model: gameEvaluationQuestionModel_1.GameEvaluationQuestionModel,
                     as: 'evaluations',
-                    attributes: ['gameId', 'id', 'question', 'category']
+                    attributes: ['gameId', 'id', 'question', 'key', 'category']
                 }
             ]
         });
